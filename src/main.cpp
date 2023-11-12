@@ -48,9 +48,6 @@ int main()
       if (!minefield.flag_position(x, y))
         std::cout << feedback.at("bad move");
 
-    // TODO: there should be some feedback if the input coord isn't valid
-    // eg: "That cell is out of bounds!"
-
     if (minefield.won)
     {
       std::cout << feedback.at("win");
