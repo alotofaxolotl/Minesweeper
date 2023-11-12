@@ -1,5 +1,6 @@
 #include <iostream>
 #include <random>
+#include <map>
 
 #include "include/minefield.h"
 #include "include/minefieldcell.h"
@@ -10,6 +11,11 @@ void initialize()
 {
   srand(time(NULL));
 }
+
+const std::map<std::string, std::string> feedback = {
+    {"bad move", "Sorry, you can't do that.\n\n"},
+    {"win", "Congrats! You won!\n\n"},
+    {"lose", "Better luck next time!\n\n"}};
 
 int main()
 {
@@ -35,26 +41,26 @@ int main()
     y -= 1;
 
     if (user_command == UserCommand::CLEAR)
-    {
-      minefield.clear_position(x, y);
-    }
+      if (!minefield.clear_position(x, y))
+        std::cout << feedback.at("bad move");
 
     if (user_command == UserCommand::FLAG)
-      minefield.flag_position(x, y);
+      if (!minefield.flag_position(x, y))
+        std::cout << feedback.at("bad move");
 
     // TODO: there should be some feedback if the input coord isn't valid
     // eg: "That cell is out of bounds!"
 
     if (minefield.won)
     {
-      std::cout << "Congrats! You won!\n\n";
+      std::cout << feedback.at("win");
       break;
     }
   }
 
   if (!minefield.won)
   {
-    std::cout << "Better luck next time!\n\n";
+    std::cout << feedback.at("lose");
   }
   minefield.draw();
 
