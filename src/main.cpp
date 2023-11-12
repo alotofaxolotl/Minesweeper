@@ -5,14 +5,12 @@
 #include "include/minefield.h"
 #include "include/minefieldcell.h"
 #include "include/parser.h"
-
-const std::map<std::string, std::string> feedback = {
-    {"bad move", "Sorry, you can't do that.\n\n"},
-    {"win", "Congrats! You won!\n\n"},
-    {"lose", "Better luck next time!\n\n"}};
+#include "include/lang.h"
 
 int main()
 {
+  using namespace minesweeper;
+
   int width, height;
   get_dimensions(width, height, std::cin);
 
@@ -26,7 +24,7 @@ int main()
     minefield.draw();
 
     if (!get_command(user_command, x, y, std::cin))
-      std::cout << "That's not a valid command!\n";
+      std::cout << feedback.at("bad command");
 
     x -= 1;
     y -= 1;
