@@ -4,6 +4,9 @@
 #include <iostream>
 #include <sstream>
 
+// TODO: update tests to suit new get_command function
+// TODO: test get_dimesions
+
 void test_get_command(std::string test_name, std::string input, int &test_count, UserCommand expected_command, int expected_x, int expected_y)
 {
   UserCommand command;

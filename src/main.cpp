@@ -33,8 +33,7 @@ int main()
 
     minefield.draw();
 
-    // TODO: input validation should be done inside parse()
-    while (!get_command(user_command, x, y, std::cin))
+    if (!get_command(user_command, x, y, std::cin))
       std::cout << "That's not a valid command!\n";
 
     x -= 1;
