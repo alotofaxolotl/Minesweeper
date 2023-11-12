@@ -21,3 +21,18 @@ bool get_command(UserCommand &user_command, int &x, int &y)
 
   return true;
 }
+
+bool get_dimensions(int &x, int &y)
+{
+
+  // TODO: add validation for x and y (eg negatives)
+  // TODO: make this safe
+
+  std::cout << "Width: ";
+  std::cin >> x;
+
+  std::cout << "Height: ";
+  std::cin >> y;
+
+  return true;
+}

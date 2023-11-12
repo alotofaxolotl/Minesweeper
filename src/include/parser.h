@@ -20,5 +20,6 @@ namespace minesweeper
 }
 
 bool get_command(UserCommand &, int &, int &);
+bool get_dimensions(int &, int &);
 
 #endif

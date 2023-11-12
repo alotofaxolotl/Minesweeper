@@ -5,6 +5,7 @@
 #include "include/minefieldcell.h"
 #include "include/parser.h"
 
+// could this be moved to the Minefield constructor?
 void initialize()
 {
   srand(time(NULL));
@@ -14,14 +15,8 @@ int main()
 {
   initialize();
 
-  // TODO: this should be handled by a dedicated function
-  // consider moving to UserInput
-
   int width, height;
-  std::cout << "Enter a width and a height!\n";
-
-  std::cin >> width;
-  std::cin >> height;
+  get_dimensions(width, height);
 
   Minefield minefield(width, height);
   UserCommand user_command;
