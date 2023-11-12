@@ -50,6 +50,8 @@ int main()
 
     // TODO: there should be some feedback if the input coord isn't valid
     // eg: "That cell is out of bounds!"
+
+    // TODO: check for a win! let the user know they won
   }
 
   minefield.draw();

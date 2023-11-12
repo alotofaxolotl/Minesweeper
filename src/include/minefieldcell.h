@@ -8,8 +8,6 @@ namespace minesweeper
   const float MINE_CHANCE = 0.1f;
 };
 
-// TODO: move functionality to .cpp file
-
 struct MinefieldCell
 {
   bool mine = false;
@@ -18,10 +16,5 @@ struct MinefieldCell
 
   MinefieldCell();
 };
-
-MinefieldCell::MinefieldCell()
-{
-  mine = static_cast<float>(rand()) / RAND_MAX <= minesweeper::MINE_CHANCE;
-}
 
 #endif
