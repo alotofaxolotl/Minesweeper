@@ -4,6 +4,12 @@ void get_integer(int &n, std::istream &stream)
 {
   auto is_number = [](std::string s)
   {
+    if (s.empty())
+      return false;
+
+    if (s[0] == '-')
+      s.erase(s.begin());
+
     return !s.empty() && std::find_if(s.begin(), s.end(), [](auto c)
                                       { return !std::isdigit(c); }) == s.end();
   };
@@ -41,16 +47,16 @@ bool get_command(UserCommand &user_command, int &x, int &y, std::istream &stream
   return true;
 }
 
-bool get_dimensions(int &x, int &y, std::istream &stream = std::cin)
+bool get_dimensions(int &x, int &y, std::istream &stream, std::ostream &out)
 {
   int _x, _y;
 
   do
   {
-    std::cout << "Width: ";
+    out << "Width: ";
     get_integer(_x, stream);
 
-    std::cout << "Height: ";
+    out << "Height: ";
     get_integer(_y, stream);
   } while (_x < 3 || _y < 3);
 

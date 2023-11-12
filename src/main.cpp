@@ -12,7 +12,7 @@ int main()
   using namespace minesweeper;
 
   int width, height;
-  get_dimensions(width, height, std::cin);
+  get_dimensions(width, height, std::cin, std::cout);
 
   Minefield minefield(width, height);
   UserCommand user_command;

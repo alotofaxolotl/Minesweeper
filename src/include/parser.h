@@ -20,6 +20,7 @@ namespace minesweeper
 }
 
 bool get_command(UserCommand &, int &, int &, std::istream &);
-bool get_dimensions(int &, int &, std::istream &);
+bool get_dimensions(int &, int &, std::istream &, std::ostream &);
+void get_integer(int &, std::istream &);
 
 #endif
