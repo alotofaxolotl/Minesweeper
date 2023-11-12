@@ -6,12 +6,6 @@
 #include "include/minefieldcell.h"
 #include "include/parser.h"
 
-// could this be moved to the Minefield constructor?
-void initialize()
-{
-  srand(time(NULL));
-}
-
 const std::map<std::string, std::string> feedback = {
     {"bad move", "Sorry, you can't do that.\n\n"},
     {"win", "Congrats! You won!\n\n"},
@@ -19,8 +13,6 @@ const std::map<std::string, std::string> feedback = {
 
 int main()
 {
-  initialize();
-
   int width, height;
   get_dimensions(width, height, std::cin);
 

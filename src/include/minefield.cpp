@@ -2,6 +2,8 @@
 
 Minefield::Minefield(int width, int height)
 {
+  srand(time(NULL));
+
   Minefield::width = width;
   Minefield::height = height;
 
