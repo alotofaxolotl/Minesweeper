@@ -1,9 +1,26 @@
 #include "parser.h"
 
+void get_integer(int &n, std::istream &stream)
+{
+  auto is_number = [](std::string s)
+  {
+    return !s.empty() && std::find_if(s.begin(), s.end(), [](auto c)
+                                      { return !std::isdigit(c); }) == s.end();
+  };
+
+  std::string raw_input;
+  do
+  {
+    raw_input = "";
+    stream >> raw_input;
+  } while (!is_number(raw_input));
+
+  n = std::stoi(raw_input);
+}
+
 bool get_command(UserCommand &user_command, int &x, int &y, std::istream &stream = std::cin)
 {
   using namespace minesweeper;
-  // TODO: make this function safe
 
   std::string c;
   do
@@ -16,25 +33,29 @@ bool get_command(UserCommand &user_command, int &x, int &y, std::istream &stream
   user_command = static_cast<UserCommand>(commands.at(c));
 
   std::cout << "Row: ";
-  stream >> y;
+  get_integer(y, stream);
 
   std::cout << "Column: ";
-  stream >> x;
+  get_integer(x, stream);
 
   return true;
 }
 
 bool get_dimensions(int &x, int &y, std::istream &stream = std::cin)
 {
+  int _x, _y;
 
-  // TODO: add validation for x and y (eg negatives)
-  // TODO: make this safe
+  do
+  {
+    std::cout << "Width: ";
+    get_integer(_x, stream);
 
-  std::cout << "Width: ";
-  stream >> x;
+    std::cout << "Height: ";
+    get_integer(_y, stream);
+  } while (_x < 3 || _y < 3);
 
-  std::cout << "Height: ";
-  stream >> y;
+  x = _x;
+  y = _y;
 
   return true;
 }
