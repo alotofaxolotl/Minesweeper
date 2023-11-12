@@ -37,7 +37,6 @@ int main()
     if (user_command == UserCommand::CLEAR)
     {
       minefield.clear_position(x, y);
-      continue;
     }
 
     if (user_command == UserCommand::FLAG)
@@ -46,9 +45,17 @@ int main()
     // TODO: there should be some feedback if the input coord isn't valid
     // eg: "That cell is out of bounds!"
 
-    // TODO: check for a win! let the user know they won
+    if (minefield.won)
+    {
+      std::cout << "Congrats! You won!\n\n";
+      break;
+    }
   }
 
+  if (!minefield.won)
+  {
+    std::cout << "Better luck next time!\n\n";
+  }
   minefield.draw();
 
   return 0;

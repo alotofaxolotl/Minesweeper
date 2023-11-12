@@ -9,6 +9,7 @@
 struct Minefield
 {
   bool game_over = false;
+  bool won = false;
 
   Minefield(int, int);
 
@@ -24,6 +25,7 @@ private:
   int adjacent_mines(int &, int &);
   void detonate();
   char cell_character(int &, int &);
+  bool check_for_win();
 };
 
 #endif

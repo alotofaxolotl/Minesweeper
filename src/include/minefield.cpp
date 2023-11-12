@@ -43,6 +43,8 @@ bool Minefield::clear_position(int x, int y)
     clear_position(x, y - 1);
     clear_position(x, y + 1);
   }
+
+  won = check_for_win();
   return true;
 }
 
@@ -131,4 +133,17 @@ char Minefield::cell_character(int &x, int &y)
     return ' ';
 
   return '0' + mines;
+}
+
+bool Minefield::check_for_win()
+{
+  for (auto &row : cells)
+  {
+    for (auto &cell : row)
+    {
+      if (!cell.revealed && !cell.mine)
+        return false;
+    }
+  }
+  return true;
 }
