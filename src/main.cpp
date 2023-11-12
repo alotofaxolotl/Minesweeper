@@ -16,7 +16,7 @@ int main()
   initialize();
 
   int width, height;
-  get_dimensions(width, height);
+  get_dimensions(width, height, std::cin);
 
   Minefield minefield(width, height);
   UserCommand user_command;
@@ -28,7 +28,7 @@ int main()
     minefield.draw();
 
     // TODO: input validation should be done inside parse()
-    while (!get_command(user_command, x, y))
+    while (!get_command(user_command, x, y, std::cin))
       std::cout << "That's not a valid command!\n";
 
     x -= 1;

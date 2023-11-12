@@ -19,7 +19,7 @@ namespace minesweeper
       {"flag", 2}};
 }
 
-bool get_command(UserCommand &, int &, int &);
-bool get_dimensions(int &, int &);
+bool get_command(UserCommand &, int &, int &, std::istream &);
+bool get_dimensions(int &, int &, std::istream &);
 
 #endif
